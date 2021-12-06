@@ -470,6 +470,8 @@ input[type="checkbox"] {
 
 body {
   font-family: "Poppins", sans-serif;
+  background-image: url("../img/backg.jpg");
+  background-size: cover;
 }
 
 #login-error-msg {

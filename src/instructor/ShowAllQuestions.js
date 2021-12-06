@@ -63,19 +63,7 @@ const ShowAllQuestions = (props) => {
               <tbody className="tbody-scrollable-container">
               {
               list.map((obj, index) => <Row className="questions-rows col-md-12" key={obj.qid}>
-                <tr className="col-md-12" style={{ "width": "100%" }}>
-                  <td className="list-section col-md-12">
-                    <li class="list-item col-md-12">{obj.questionString}
-                    {/*<Button class="col-md-3 btn-secondary" onClick={open}>see details</Button>*/}
-                      <QuestionModal allData={props.quesDetails} qid={obj.qid} close={close} />
-                      <span class="list-item-detail">
-                    <span>Function: {obj.topic}</span>
-                    <span>Difficulty: {obj.difficulty}</span>
-                  </span>
-
-                    </li>
-                  </td>
-                </tr>
+                    <QuestionModal obj = {obj} allData={props.quesDetails} qid={obj.qid} close={close} />
               </Row>
               )
               }

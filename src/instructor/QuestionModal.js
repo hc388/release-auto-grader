@@ -4,7 +4,7 @@ import Modal from "react-modal"
 import { destringify, restringify } from 'json-destringify';
 
 
-const QuestionModal = ({allData, qid, close}) => {
+const QuestionModal = ({obj, allData, qid, close}) => {
     const [quesObj, setQuesObj] = useState({})
     const [loading, setLoading] = useState(true)
     const [isOpen, setIsOpen] = useState(false)
@@ -22,7 +22,18 @@ const QuestionModal = ({allData, qid, close}) => {
 
     return (
         <div className="question-modal">
-            <Button class="col-md-3 btn-light" onClick={openModal}>see details</Button>
+            <tr className="col-md-12" style={{"width": "100%"}}>
+                <td className="list-section col-md-12" onClick={openModal}>
+                    <li className="list-item col-md-12">{obj.questionString}
+                        <span className="list-item-detail">
+                    <span>Function: {obj.topic}</span>
+                    <span>Difficulty: {obj.difficulty}</span>
+                  </span>
+
+                    </li>
+                </td>
+            </tr>
+            {/*<Button class="btn btn-light" onClick={openModal}>see details</Button>*/}
             <Modal
                 className="custom_modal"
                 overlayClassName="custom_overlay"
