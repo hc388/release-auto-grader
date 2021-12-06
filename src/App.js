@@ -23,7 +23,7 @@ import StudentDisplayGrades from "./student/StudentDisplayGrades";
 
 import React, {useState} from "react";
 import NavHead from "./Nav/NavHead";
-import "/Users/hrithik/Desktop/webstorm/release-auto-grader/src/css/App.css"
+import "./css/App.css"
 import HomePage from "./login/HomePage";
 
 function App() {

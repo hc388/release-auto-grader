@@ -728,3 +728,7 @@ table > td {
 .all-exams-page{
   height: 800px !important;
 }
+
+.exam-score-card{
+  margin: 0px auto 30px;
+}
