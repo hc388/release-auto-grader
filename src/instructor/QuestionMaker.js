@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import RenderQuestionMaker from "./RenderQuestionMaker";
-import * as SourceAPI from "../misc/SourceAPI";
 import Axios from "axios";
-import Auth from "../misc/Auth";
+import Auth from "../Auth/Auth";
 
 function QuestionMaker(props) {
   const [questionString, updateQuestion] = useState("");

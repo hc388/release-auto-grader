@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col, Table, Button } from "react-bootstrap";
-
 import QuestionBlock from "./QuestionBlock";
-import ResultTable from "./ResultTable";
 import ResultSection from "./ResultSection";
-import Auth from "../misc/Auth";
+import Auth from "../Auth/Auth";
 
 const GradesByStudent = props => {
 
@@ -180,7 +178,7 @@ const GradesByStudent = props => {
   };
 
   return (
-    <div className="container-main-exam">
+    <div className="container-main-exam d-flex align-items-center flex-column">
       {loginStatus ?
         <React.Fragment>
           {role === "Instructor" ?
@@ -208,12 +206,12 @@ const GradesByStudent = props => {
           }
           <Container>
             <Row className="d-flex justify-content-center align-items-center mb-5 mt-5">
-              <Col className="col-4">
-                <Button className="btn-info btn-lg" style={{ transform: "scale(2)" }} onClick={updateScore}>Save
+              <Col className="col-3">
+                <Button className="btn-info btn-lg" onClick={updateScore}>Save
                   Changes</Button>
               </Col>
-              <Col className="col-4">
-                <Button className="btn-danger btn-lg" style={{ transform: "scale(2)" }} onClick={cancelScore}>Cancel
+              <Col className="col-3">
+                <Button className="btn-danger btn-lg" onClick={cancelScore}>Cancel
                   Changes</Button>
               </Col>
             </Row>

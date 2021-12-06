@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, {useEffect, useState} from "react";
-import {Link, Redirect} from "react-router-dom";
-import {Table, Container, Button, Card, ListGroup} from "react-bootstrap";
+import {Link} from "react-router-dom";
+import {Container, Button} from "react-bootstrap";
 import Auth from "../Auth/Auth";
-import App from "../App";
 import axios from "axios";
 import ExamCard from "./ExamCard";
 

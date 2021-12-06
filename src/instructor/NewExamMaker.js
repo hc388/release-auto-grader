@@ -55,16 +55,17 @@ const NewExamMaker = (props) => {
           <>
           <Table>
             <tr>
-              <th>Question</th>
-              <th>Points</th>
+              <th style={{textAlign:"center"}}>Question</th>
+              <th style={{textAlign:"center"}}>Points</th>
             </tr>
             {props.questionList.map((obj) => {
               return (
                 <Row className="question-rows" key={obj.id}>
                   <tr key={obj.qid} className="d-flex">
-                    <button className="btn-light" onClick={(e) => onButtonClick(e, obj.qid)}>Delete</button>
+                    <button className="btn-light delete-ques-button" onClick={(e) => onButtonClick(e, obj.qid)}>Delete</button>
                     <td className="list-section">
-                      <li class="list-item">{obj.questionString}
+                      <li class="list-item">
+                        {obj.questionString}
                         <span class="list-item-detail">
                       <span>Function: {obj.topic}</span>
                       <span>Difficulty: {obj.difficulty}</span>
@@ -86,18 +87,19 @@ const NewExamMaker = (props) => {
           </Table>
 
 
-          <div>
-            <h1>Exam name</h1>
+          <div className="d-flex flex-column align-items-center">
+            <h3>Exam name</h3>
             <input
-              style={{ fontSize: "30px" }}
+              style={{ fontSize: "20px" }}
               type="text"
               className="exam-name mb-5"
               onChange={(e) => setExamName(e.target.value)}
             />
-          </div>
-          <Button className="btn-lg mt-3 process-button" onClick={handleSubmit}>
+
+          <Button className="btn-lg process-button" onClick={handleSubmit}>
             Submit Exam
           </Button>
+          </div>
             {doesExist && <h2 className="mt-5">Exam Name Already Exists. Please enter a different name.</h2>}
           {!doesExist && status === 1 && <h2 className="mt-5">Exam Submitted</h2>}
         </>

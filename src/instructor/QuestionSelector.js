@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import { Button, Container, Table } from "react-bootstrap";
 import { Col, Row } from "react-flexbox-grid";
 import FilterTopicOptions from "./FilterTopicOptions";
@@ -44,22 +44,22 @@ const QuestionSelector = props => {
 
   return(
       <Container
-        className="container-fluid d-flex flex-column justify-content-center align-items-center  col-md-5 h-100 container-left">
+        className="container-fluid d-flex flex-column justify-content-center align-items-center h-100 container-left">
 
-        <Row className="greet-msg m-3">Select Questions To Compile</Row>
-        <Row className="d-flex flex-wrap mb-lg-5">
+        <Row className="greet-msg mt-3">Select Questions To Compile</Row>
+        <Row className="d-flex flex-wrap mb-lg-2">
           <FilterTopicOptions questionList={props.questionList} updater={props.updater}
                               allQuestionList={props.allQuestionList} difficulty={difficulty} updateTopic={setTopic}/>
 
           {/*<FilterDifficultyOptions questionList={props.questionList} updater={props.updater} allQuestionList={props.allQuestionList}/>*/}
         </Row>
-        <Row className="d-flex flex-row col-md-9 align-items-center" style={{ marginBottom: "5%" }}>
+        <Row className="d-flex flex-row col-md-9 align-items-center" style={{ marginBottom: "1%" }}>
           {/*<Col className="col-md-6">*/}
           {/*  <Button className="btn-xl" onClick={e => handleSelectedButton(e)}>Show Selected</Button>*/}
           {/*</Col>*/}
-          <Col className="col-md-12">
-            <label className="col-md-8" htmlFor="user">
-              <h3>Question Difficulty</h3>
+          <Col className="col-md-12 col-sm-offset-3">
+            <label className="col-md-4" htmlFor="user">
+              <p>Question Difficulty</p>
             </label>
             <select
               name="Difficulty"
@@ -74,9 +74,9 @@ const QuestionSelector = props => {
             </select>
           </Col>
         </Row>
-        <Row className="d-flex flex-row justify-content-center col-md-10 mb-5">
-          <Button  style={{fontSize:"30px"}} className="btn-light btn-lg col-md-4 mx-5" onClick={handleReset}>Reset Filters</Button>
-          <Button  style={{fontSize:"30px"}} className="btn-light btn-lg col-md-4" onClick={handleDeselect}>Deselect All</Button>
+        <Row className="d-flex flex-row justify-content-center col-md-10 mb-1">
+          <Button  style={{fontSize:"20px"}} className="btn-light btn-lg col-md-4 mx-5" onClick={handleReset}>Reset Filters</Button>
+          <Button  style={{fontSize:"20px"}} className="btn-light btn-lg col-md-4" onClick={handleDeselect}>Deselect All</Button>
         </Row>
         <Table className="col-md-11">
           <tbody>
@@ -91,7 +91,7 @@ const QuestionSelector = props => {
                       </span>
                   </li>
                 </td>
-                <button className="btn-light" onClick={(e) => onButtonClick(e, obj.qid)}>Add</button>
+                <button className="btn-light h-50 mt-3" onClick={(e) => onButtonClick(e, obj.qid)}>Add</button>
               </tr>
             </Row>
           )}

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Col, Row, Grid } from "react-flexbox-grid";
-import NewExamMaker from "./NewExamMaker";
 import { Table, Container, Button } from "react-bootstrap";
 import FilterTopicOptions from "./FilterTopicOptions";
-import FilterDifficultyOptions from "./FilterDifficultyOptions";
+import { useModal } from 'react-hooks-use-modal';
+import QuestionModal from "./QuestionModal";
+
 
 const ShowAllQuestions = (props) => {
   const list = props.questionList;
@@ -14,6 +15,10 @@ const ShowAllQuestions = (props) => {
   const [submit, setSubmit] = useState(0);
   const [difficulty, setDifficulty] = useState("ALL");
   const [topic, setTopic] = useState(null);
+  const [Modal, open, close, isOpen] = useModal('root', {
+    preventScroll: true,
+    closeOnOverlayClick: false
+  });
 
   const handleReset = (e) => {
     props.resetter();
@@ -30,20 +35,18 @@ const ShowAllQuestions = (props) => {
 
 
   return (
-    <Grid className="scrollable-container">
-      <Row className="d-flex flex-wrap mb-lg-5">
+    <Container className="scrollable-container">
         <FilterTopicOptions questionList={props.questionList} updater={props.updater}
                             allQuestionList={props.allQuestionList} difficulty={difficulty} updateTopic={setTopic}/>
 
         {/*<FilterDifficultyOptions questionList={props.questionList} updater={props.updater} allQuestionList={props.allQuestionList}/>*/}
-      </Row>
-      <Row className="d-flex flex-row col-md-9 align-items-center" style={{ marginBottom: "5%" }}>
-        <label className="col-md-8" htmlFor="user">
-          <h3>Question Difficulty</h3>
+      <Row className="d-flex flex-row col-md-12" style={{ marginBottom: "1%" }}>
+        <label className="col-md-3" htmlFor="user">
+          <p>Question Difficulty</p>
         </label>
         <select
           name="Difficulty"
-          className="question-diff-small col-md-4"
+          className="question-diff-small col-md-3"
           onChange={(e) => handleDifficultyChange(e)}
           value={difficulty}
         >
@@ -53,20 +56,23 @@ const ShowAllQuestions = (props) => {
           <option value="HARD">HARD</option>
         </select>
       </Row>
-      <Button className="btn-light btn-lg mb-5" onClick={handleReset}>Reset Filters</Button>
+      <Button className="btn-light btn-md mb-2" onClick={handleReset}>Reset Filters</Button>
       <>
         {list.length !== 0 ? (
             <Table className="table-bordered">
               <tbody className="tbody-scrollable-container">
               {
-              list.map((obj, index) => <Row className="questions-rows col-md-12" key={obj.id}>
+              list.map((obj, index) => <Row className="questions-rows col-md-12" key={obj.qid}>
                 <tr className="col-md-12" style={{ "width": "100%" }}>
                   <td className="list-section col-md-12">
                     <li class="list-item col-md-12">{obj.questionString}
+                    {/*<Button class="col-md-3 btn-secondary" onClick={open}>see details</Button>*/}
+                      <QuestionModal allData={props.quesDetails} qid={obj.qid} close={close} />
                       <span class="list-item-detail">
                     <span>Function: {obj.topic}</span>
                     <span>Difficulty: {obj.difficulty}</span>
                   </span>
+
                     </li>
                   </td>
                 </tr>
@@ -79,7 +85,7 @@ const ShowAllQuestions = (props) => {
           <p className="mt-5 text-black-50">No such entries...</p>
         }
       </>
-    </Grid>
+    </Container>
   );
 };
 

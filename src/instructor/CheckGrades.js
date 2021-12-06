@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Table, Button } from "react-bootstrap";
-import Auth from "../misc/Auth";
+import { Table } from "react-bootstrap";
+import Auth from "../Auth/Auth";
 
 
 const CheckGrades = (props) => {
@@ -83,7 +83,7 @@ const CheckGrades = (props) => {
                 <tbody>
                 {dataArray.map((obj) => (
                   <tr key={`div${obj}`}>
-                    <td className="th-lg" style={{ "fontSize": "40px", fontWeight: "900" }}>{obj}</td>
+                    <td className="th-lg" style={{ "fontSize": "20px", fontWeight: "900", textAlign:"center", verticalAlign:"middle" }}>{obj}</td>
                     <td>
                       <Link to={`/instructor/check-grades/:${obj}`}>
 

@@ -82,7 +82,7 @@ const TestCaseGenerator = (props) => {
           </span>
         );
       })}
-      <Button className="btn btn-secondary" onClick={onClickSubmit} style={{width:"300px", fontSize:"30px"}}>Attatch Testcases</Button>
+      <Button className="btn btn-secondary" onClick={onClickSubmit} style={{width:"200px", fontSize:"15px"}}>Attatch Testcases</Button>
     </React.Fragment>
   );
 };

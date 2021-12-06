@@ -4,8 +4,6 @@ import { Row, Button, Table } from "react-bootstrap";
 
 const ResultSection = (props) => {
 
-  //console.log(props.gradeobj.gradingObj);
-
   const [testCaseHeader, setTestCaseHeader] = useState([]);
   const [expectedResult, setExpectedResult] = useState([]);
   const [actualResult, setActualResult] = useState([]);
@@ -144,15 +142,15 @@ const ResultSection = (props) => {
   };
 
   return (<React.Fragment>
-      <Table striped bordered hover size="lg"
+      <Table striped bordered hover size="sm"
              className="text-center align-middle table table-hover table-fixed result-table">
         <thead>
         <tr>
           <th scope="col">TestCase</th>
           <th scope="col">Expected</th>
           <th scope="col">Run</th>
-          <th scope="col">Points</th>
           <th scope="col">Max</th>
+          <th scope="col">Points</th>
           <th scope="col">Update</th>
         </tr>
         </thead>

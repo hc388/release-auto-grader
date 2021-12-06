@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from "react";
 import { Row, Button, Col } from "react-bootstrap";
-import FilterDifficultyOptions from "./FilterDifficultyOptions";
 
 const FilterTopicOptions = props => {
   const list = props.questionList;
@@ -59,15 +58,15 @@ const FilterTopicOptions = props => {
 
 
   return(
-    <>
-        {!loading &&
+      <Row className="d-flex flex-row flex-wrap mt-2 mb-2 justify-content-center align-items-center">
+          {!loading &&
         (Object.keys(sortType(props.questionList)).map((key, index) =>
-            <Col key={key}><button className="btn-lg btn-light" onClick={e => onClickHandler(e, key)}>{key}</button></Col>
+            <Col className="topicsItem" key={key}><button className="btn-sm btn-light" onClick={e => onClickHandler(e, key)}>{key}</button></Col>
           )
         )}
-        {loading && <Col><Button className="btn-lg btn-primary" onClick={sortType}>Categorize By Topic</Button></Col>}
+        {loading && <Col className="column-by-topic"><Button className="btn-sm btn-primary categorize-button" onClick={sortType}>Categorize By Topic</Button></Col>}
 
-    </>
+    </Row>
   )
 }
 

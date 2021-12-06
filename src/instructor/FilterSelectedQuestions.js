@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Col, Row, Grid } from "react-flexbox-grid";
+import { Col, Row } from "react-flexbox-grid";
 import NewExamMaker from "./NewExamMaker";
 import { Table, Container, Button } from "react-bootstrap";
-import Temp from "./Temp";
 import FilterTopicOptions from "./FilterTopicOptions";
 
 const FilterSelectedQuestions = (props) => {

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import {Table} from 'react-bootstrap'
 
 const  ResultTable = ({ index, tests, expected, actual, points, total, updater, resetInput, setResetInput }) => {
   const [inputValue, setInputValue] = useState(null)
@@ -33,9 +32,10 @@ const  ResultTable = ({ index, tests, expected, actual, points, total, updater, 
          {actual[index] === true && <td>True</td>}
          {actual[index] === false && <td>False</td>}
          {actual[index] !== true && actual[index] !== false && <td>{actual[index]}</td>}
-        <td className="text-center align-middle">{(Math.round(points[index] * 100) / 100).toFixed(2)}</td>
         <td>{(Math.round(total[index] * 100) / 100).toFixed(2)}</td>
-        <td><input style={{height:"80px", width:"80%", fontSize: "30px", textAlign: "center"}} value={inputValue} min={0} max={total[index]}   onChange={e=>changeInputValue(e)}/></td>
+        <td style={{backgroundColor: "lightgreen", fontWeight:900}} className="text-center align-middle">{(Math.round(points[index] * 100) / 100).toFixed(2)}</td>
+
+        <td><input style={{height:"50px", width:"80%", fontSize: "30px", textAlign: "center"}} value={inputValue} min={0} max={total[index]}   onChange={e=>changeInputValue(e)}/></td>
       </tr>
       {overflowFlag && <p>Input value must not exceed Max points</p> }
     </React.Fragment>

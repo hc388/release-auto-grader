@@ -3,7 +3,7 @@ import "../css/App.css";
 import React, { useState } from "react";
 import LoginForm from "../login/LoginForm";
 import NewApiCall from "./NewApiCall";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Auth from "../Auth/Auth";
 
 function HomePage(props) {

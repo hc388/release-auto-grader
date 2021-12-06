@@ -3,8 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Axios from "axios";
 import QuestionSelector from "./QuestionSelector";
 import QuestionDisplayer from "./QuestionDisplayer";
-import FilterSelectedQuestions from "./FilterSelectedQuestions";
-import Auth from "../misc/Auth";
+import Auth from "../Auth/Auth";
 
 const ExamLandingPage = (props) => {
   const [questions, setQuestions] = useState([]);
