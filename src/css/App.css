@@ -119,7 +119,8 @@
 }
 
 .container-left-home {
-  width: 49%;
+  width: 45%;
+  height: 90%;
   min-height: 90%;
   display: flex;
   flex-direction: column;
@@ -169,9 +170,10 @@ input.largerCheckbox{
 }
 
 .greet-msg {
+  margin: 0px auto;
   height: 100px;
   font-weight: 900;
-  font-size: 40px;
+  font-size: 30px;
 }
 .container-status-box {
   align-self: center;
@@ -181,6 +183,28 @@ input.largerCheckbox{
   background: #ffffff;
   display: flex;
   flex-direction: column;
+}
+
+.newExamCard{
+  width: 80%;
+  margin: 40px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-header{
+  font-weight: 900;
+  text-align: center;
+  padding-left: 22%;
+}
+
+.newExamCard > div {
+  width: 80%;
+  display: flex;
+  align-items: center;
+
 }
 
 .textarea-question-maker > textarea {
@@ -244,7 +268,7 @@ input.largerCheckbox{
 
 
 .container-links {
-  height: 100%;
+  height: 90%;
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -252,8 +276,8 @@ input.largerCheckbox{
 }
 
 .container-links > div {
-  height: 97px;
-  margin-bottom: 100px;
+  height: 60px;
+  margin-bottom: 40px;
   background-color: rgba(
     235.87500303983688,
     235.87500303983688,
@@ -270,6 +294,7 @@ input.largerCheckbox{
 .make-question > a,
 .see-grades > a,
 .make-exam > a {
+  text-align: center;
   width: 100%;
   background-color: #0d6efd;
 }

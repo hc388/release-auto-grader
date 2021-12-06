@@ -6,6 +6,7 @@ import {
     Switch,
     Redirect,
 } from "react-router-dom";
+import InstructorHome from "./instructor/InstructorHome";
 import React, {useState} from "react";
 import NavHead from "./Nav/NavHead";
 import "/Users/hrithik/Desktop/webstorm/release-auto-grader/src/css/App.css"
@@ -23,6 +24,10 @@ function App() {
                 <Route exact path="/">
                     <HomePage updateAppId={updateId}/>{" "}
                 </Route>
+                <Route exact path="/instructor">
+                    <InstructorHome instructorId={id}/>
+                </Route>
+
             </Switch>
         </Router>
     );
