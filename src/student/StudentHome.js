@@ -24,17 +24,18 @@ function StudentHome(props) {
 
     return (
         <Container className="container-fluid" style={{"max-width": "1619px"}}>
-            <div className="container-main-login">
+            <div className="container-sec-login">
                 {loginStatus ?
                     <React.Fragment>
                         {role === "Student" ? <>
-                                <div className="container-left-home">
-                                    <div className="greet-msg">Hi, Student!</div>
-                                    <div className="container-status-box">
-                                        <h3>You have no tasks pending.</h3>
-                                    </div>
-                                </div>
-                                <div className="container-right-login">
+                                {/*<div className="container-left-home">*/}
+
+                                {/*    <div className="container-status-box">*/}
+                                {/*        <h3>You have no tasks pending.</h3>*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
+                                <div className="greet-msg">Hi, Student!</div>
+                                <div className="container-right-sec-login">
                                     <div className="container-links">
                                         <div className="make-question">
                                             <Link to="/student/take-exam">

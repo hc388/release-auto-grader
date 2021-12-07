@@ -38,25 +38,26 @@ function InstructorHome(props) {
 
     return (
         <Container className="container-fluid" style={{"max-width": "1619px"}}>
-            <div className="container-main-login">
+            <div className="container-sec-login">
                 {loginStatus ?
                     <React.Fragment>
                         {role === "Instructor" ?
                             <>
-                                <div className="container-left-home">
-                                    <div className="greet-msg">Hi, Instructor!</div>
-                                    <div className="container-status-box">
-                                        {
-                                            examExist ? (<React.Fragment>
-                                                    <h3>You have an exam to grade...</h3>
-                                                    {examArray.map(examName => <ExamCard name={examName} key={examName}/>)}
+                                {/*<div className="container-left-home">*/}
+                                {/*    <div className="greet-msg">Hi, Instructor!</div>*/}
+                                {/*    <div className="container-status-box">*/}
+                                {/*        {*/}
+                                {/*            examExist ? (<React.Fragment>*/}
+                                {/*                    <h3>You have an exam to grade...</h3>*/}
+                                {/*                    {examArray.map(examName => <ExamCard name={examName} key={examName}/>)}*/}
 
-                                                </React.Fragment>) :
-                                                <h3>You have no tasks pending.</h3>
-                                        }
-                                    </div>
-                                </div>
-                                <div className="container-right-login">
+                                {/*                </React.Fragment>) :*/}
+                                {/*                <h3>You have no tasks pending.</h3>*/}
+                                {/*        }*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
+                                <div className="greet-msg">Hi, Instructor!</div>
+                                <div className="container-right-sec-login">
                                     <div className="container-links">
                                         <div className="make-question">
                                             <Link to="/instructor/question-maker">
