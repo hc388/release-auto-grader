@@ -184,8 +184,11 @@ input.largerCheckbox{
   justify-items: center;
   width: 90%;
   background: #ffffff;
-  display: flex;
+  /*display: flex;*/
   flex-direction: column;
+  display: block;
+  overflow-y: auto;    /* Trigger vertical scroll    */
+  overflow-x: hidden;
 }
 
 .newExamCard{

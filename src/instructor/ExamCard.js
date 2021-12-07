@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Button, Card, ListGroup} from "react-bootstrap";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 
 
 const ExamCard = ({name}) => {
+
+    const [graded, isGraded] = useState(false)
+    const [released, isReleased] = useState(false)
 
     const autoGrade = async () => {
         console.log("Data being sent for autoGrade: ", JSON.stringify(
@@ -19,6 +22,7 @@ const ExamCard = ({name}) => {
             .then((res) => {
                 console.log(res);
             });
+        isGraded(true)
     };
 
     const gradeReleaseHandler = async () => {
@@ -26,6 +30,7 @@ const ExamCard = ({name}) => {
             "https://beta-0990913.herokuapp.com/api/releaseGradesForExam.php",
             JSON.stringify({examName: name})
         );
+        isReleased(true)
     };
 
     return (
@@ -40,6 +45,8 @@ const ExamCard = ({name}) => {
                     <Button className="btn-secondary" >View Scores</Button>
                     </Link>
                 </ListGroup.Item>
+                {graded && <ListGroup.Item>Exam Graded</ListGroup.Item>}
+                {released &&<ListGroup.Item>Scores Released</ListGroup.Item>}
             </ListGroup>
         </Card>
     )

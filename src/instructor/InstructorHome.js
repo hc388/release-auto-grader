@@ -24,10 +24,22 @@ function InstructorHome(props) {
         const res = await axios.get("https://beta-0990913.herokuapp.com/api/listGradePendingExams.php")
         if (res.data.ungradedExams.length !== 0) {
             setExamExist(true)
+            //console.log(res.data.ungradedExams)
             setExamArray(res.data.ungradedExams)
+            deleteDuplicate(res.data.ungradedExams)
+
         }
 
         console.log("If any exams haven't been graded...", res)
+    }
+
+    const deleteDuplicate = (examArray) => {
+        let newArray = []
+        for(let eachExam of examArray)
+            if(!newArray.includes(eachExam))
+                newArray.push(eachExam)
+        console.log("After Running duplicate, new array is: ", newArray)
+        setExamArray(newArray)
     }
 
     const loginErrorMessage = <div><h1>You are not logged in</h1> <br/>
