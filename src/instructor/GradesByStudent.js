@@ -205,7 +205,7 @@ const GradesByStudent = props => {
             })
           }
           <Container>
-            <Row className="d-flex justify-content-center align-items-center mb-5 mt-5">
+            <Row className="d-flex justify-content-center align-items-center mb-2 mt-5">
               <Col className="col-3">
                 <Button className="btn-info btn-lg" onClick={updateScore}>Save
                   Changes</Button>
@@ -215,8 +215,11 @@ const GradesByStudent = props => {
                   Changes</Button>
               </Col>
             </Row>
+            <Row className="d-flex justify-content-center align-items-center mb-5 col-sm-offset-3">
+              <h3 style={{fontSize: "20px"}}>Make sure you save all questions for changes to apply.</h3>
+            </Row>
             {saveStatus &&
-            <Row>
+            <Row className="col-md-offset-3 mb-5">
               <h1>Your changes were saved.</h1>
             </Row>
             }

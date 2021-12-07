@@ -58,7 +58,7 @@ const FilterTopicOptions = props => {
 
 
   return(
-      <Row className="d-flex flex-row flex-wrap mt-2 mb-2 justify-content-center align-items-center">
+      <Row className="d-flex flex-row flex-wrap mt-4 mb-2 justify-content-center align-items-center category-back">
           {!loading &&
         (Object.keys(sortType(props.questionList)).map((key, index) =>
             <Col className="topicsItem" key={key}><button className="btn-sm btn-light" onClick={e => onClickHandler(e, key)}>{key}</button></Col>

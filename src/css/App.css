@@ -32,8 +32,8 @@
 
 .header-main {
   align-self: center;
-  margin-right: 38%;
-  margin-left: 38%;
+  margin-right: 43%;
+  margin-left: 43%;
 }
 
 .header-main {
@@ -479,7 +479,7 @@ body {
   text-align: center;
   margin: 0;
   padding: 5px;
-  font-size: 35px;
+  font-size: 20px;
   font-weight: bold;
   color: #8a0000;
   opacity: 1;
@@ -582,12 +582,7 @@ textarea {
 .student-result-table{
   min-height: 150px;
   font-size: 15px;
-}
 
-.student-result-table{
-  display: block;
-  overflow-y: hidden;    /* Trigger vertical scroll    */
-  overflow-x: auto;
 }
 
 
@@ -731,4 +726,8 @@ table > td {
 
 .exam-score-card{
   margin: 0px auto 30px;
+}
+
+.add-ques-button{
+  height: 40px;
 }

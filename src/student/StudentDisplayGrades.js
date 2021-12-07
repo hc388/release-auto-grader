@@ -39,6 +39,7 @@ const GradesByStudent = props => {
                 } else {
                     console.log(resp);
                     setScoreDetails(resp.data.studentScoreDetails);
+                    setTotalPoints(resp.data.studentScoreDetails[0].totalPoints)
                     setLoading(false);
                     updateInitialAnswers(resp);
                     setIsGraded(true);
@@ -95,8 +96,19 @@ const GradesByStudent = props => {
             {loginStatus ?
                 <React.Fragment>
                     {role === "Student" ?
+                        !isGraded ? (
+                                <div>
+                                    <h1>Exam Data Not Available.</h1>
+                                    <h3>Exam either being Graded or Does Not Exist.</h3>
+                                    <h3>Please check back in a while.</h3>
+
+                                </div>
+
+                            ) :
+
                         <>
                             <h1 className="exam-header">Review Grade for {params.studentID}</h1>
+                            <h1 className="mb-3">Your Score: {Number(totalPoints).toFixed(2)}</h1>
                             <div className="preview-grade-section container-scrollable">
                                 <Card className="d-flex flex-row justify-content-around align-items-center mb-5 exam-score-card" style={{width: "50%", height:"50px"}}>
                                     <span>Average: {Number(average).toFixed(2)}</span>
@@ -104,7 +116,7 @@ const GradesByStudent = props => {
                                     <span>Min Score: {Number(min).toFixed((2))}</span>
                                 </Card>
 
-                                {!isGraded ? <h1>Your Exam is still being graded...Please Check back in a while</h1> :
+                                {
                                     scoreDetails.map((obj, index) => {
                                         console.log("Before displaying comments: ", obj);
                                         return <>
@@ -148,8 +160,10 @@ const GradesByStudent = props => {
                                         </>;
                                     })
                                 }
-                            </div>
-                        </>
+
+                                    </div>
+                                    </>
+
                         :
                         <>
                             {roleErrorMessage}

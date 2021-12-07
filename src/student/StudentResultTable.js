@@ -2,6 +2,16 @@ import React from "react";
 
 
 const  StudentResultTable = ({ index, tests, expected, actual, points, total }) => {
+
+    const styleRed = {
+        backgroundColor: "Red",
+        fontWeight: 900
+    }
+
+    const styleGreen = {
+        backgroundColor: "lightgreen",
+        fontWeight: 900
+    }
   return(
       <tr>
         <th>{tests[index]}</th>
@@ -11,8 +21,12 @@ const  StudentResultTable = ({ index, tests, expected, actual, points, total }) 
         {actual[index] === true && <td>True</td>}
         {actual[index] === false && <td>False</td>}
         {actual[index] !== true && actual[index] !== false && <td>{actual[index]}</td>}
-          <th>{total[index]}</th>
-        <th style={{backgroundColor: "lightgreen", fontWeight:900}}>{points[index]}</th>
+          <th>{Number(total[index]).toFixed(2)}</th>
+          {
+              total[index] === points[index] ?
+                  <td style={styleGreen} className="text-center align-middle">{(Math.round(points[index] * 100) / 100).toFixed(2)}</td> :
+                  <td style={styleRed} className="text-center align-middle">{(Math.round(points[index] * 100) / 100).toFixed(2)}</td>
+          }
 
 
       </tr>

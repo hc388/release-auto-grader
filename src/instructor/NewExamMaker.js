@@ -1,112 +1,118 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import axios from "axios";
-import { Table, Row, Col, Button } from "react-bootstrap";
+import {Table, Row, Col, Button} from "react-bootstrap";
 
 const NewExamMaker = (props) => {
-  const [examName, setExamName] = useState("");
-  const [status, setStatus] = useState(0);
-  const [scoreObject, setScoreObject] = useState({});
-  const [doesExist, setDoesExist] = useState(false)
+    const [examName, setExamName] = useState("");
+    const [status, setStatus] = useState(0);
+    const [scoreObject, setScoreObject] = useState({});
+    const [doesExist, setDoesExist] = useState(false)
 
-  const onInputChange = (e, id) => {
-    setScoreObject({
-      ...scoreObject,
-      [id]: e.target.value
-    });
-  };
+    const onInputChange = (e, id) => {
+        setScoreObject({
+            ...scoreObject,
+            [id]: e.target.value
+        });
+    };
 
-  Object.filter = (obj, predicate) =>
-    Object.keys(obj)
-      .filter((key) => predicate(obj[key]))
-      .reduce((res, key) => Object.assign(res, { [key]: obj[key] }), {});
+    Object.filter = (obj, predicate) =>
+        Object.keys(obj)
+            .filter((key) => predicate(obj[key]))
+            .reduce((res, key) => Object.assign(res, {[key]: obj[key]}), {});
 
-  const handleSubmit = async (e) => {
-    console.log("ScoreObj looks like: ", scoreObject, "for exam: ", examName);
-    let filtered = Object.filter(scoreObject, (point) => point > 0);
-    const res = await axios
-      .post(
-        "https://beta-0990913.herokuapp.com/api/createExam.php",
-        JSON.stringify({
-          examName: examName,
-          questionPointsMap: filtered
-        })
-      )
-      .then((data) => {
-        console.log(data);
-        if (data.data.responseCode === 404) {
-          setDoesExist(true)
-          console.log("Exam Name Already exists")
-          setTimeout(() => { setDoesExist(false)
-          }, 2000)
-        }
-        else
-          setStatus(1);
-      });
-  };
+    const handleSubmit = async (e) => {
+        console.log("ScoreObj looks like: ", scoreObject, "for exam: ", examName);
+        let filtered = Object.filter(scoreObject, (point) => point > 0);
+        const res = await axios
+            .post(
+                "https://beta-0990913.herokuapp.com/api/createExam.php",
+                JSON.stringify({
+                    examName: examName,
+                    questionPointsMap: filtered
+                })
+            )
+            .then((data) => {
+                console.log(data);
+                if (data.data.responseCode === 404) {
+                    setDoesExist(true)
+                    console.log("Exam Name Already exists")
+                    setTimeout(() => {
+                        setDoesExist(false)
+                    }, 2000)
+                } else
+                    setStatus(1);
+            });
+    };
 
-  const onButtonClick = (e, quesNo) => {
-    e.preventDefault()
-    props.onDeleteClick(quesNo)
-  }
+    const onButtonClick = (e, quesNo) => {
+        e.preventDefault()
+        props.onDeleteClick(quesNo)
+    }
 
-  return (
-        <div style={{ "height": "80%", "margin-bottom": "100px" }} className="container-scrollable">
-          {props.questionList.length === 0 ? <h3 className="text-black-50">Questions selected will be displayed here...</h3> : (
-          <>
-          <Table>
-            <tr>
-              <th style={{textAlign:"center"}}>Question</th>
-              <th style={{textAlign:"center"}}>Points</th>
-            </tr>
-            {props.questionList.map((obj) => {
-              return (
-                <Row className="question-rows" key={obj.id}>
-                  <tr key={obj.qid} className="d-flex">
-                    <button className="btn-light delete-ques-button" onClick={(e) => onButtonClick(e, obj.qid)}>Delete</button>
-                    <td className="list-section">
-                      <li class="list-item">
-                        {obj.questionString}
-                        <span class="list-item-detail">
+    return (
+        <div style={{"height": "80%", "margin-bottom": "100px"}} className="container-scrollable">
+            {props.questionList.length === 0 ?
+                <h3 className="text-black-50">Questions selected will be displayed here...</h3> : (
+                    <>
+                        <Table>
+                            <tr>
+                                <th style={{textAlign: "center"}}>Question</th>
+                                <th style={{textAlign: "center"}}>Points</th>
+                            </tr>
+                            {props.questionList.map((obj) => {
+                                return (
+                                    <Row className="question-rows" key={obj.id}>
+                                        <tr key={obj.qid} className="d-flex">
+                                            <button className="btn-light delete-ques-button"
+                                                    onClick={(e) => onButtonClick(e, obj.qid)}>Delete
+                                            </button>
+                                            <td className="list-section">
+                                                <li class="list-item">
+                                                    {obj.questionString}
+                                                    <span class="list-item-detail">
                       <span>Function: {obj.topic}</span>
                       <span>Difficulty: {obj.difficulty}</span>
                     </span>
-                      </li>
-                    </td>
-                    <td>
-                      <input
-                        type="number"
-                        className="question-list-item-score"
-                        onChange={(e) => onInputChange(e, obj.qid)}
-                      />
-                    </td>
-                  </tr>
-                </Row>
-              );
-            })}
+                                                </li>
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="number"
+                                                    className="question-list-item-score"
+                                                    onChange={(e) => onInputChange(e, obj.qid)}
+                                                />
+                                            </td>
+                                        </tr>
+                                    </Row>
+                                );
+                            })}
 
-          </Table>
+                        </Table>
 
 
-          <div className="d-flex flex-column align-items-center">
-            <h3>Exam name</h3>
-            <input
-              style={{ fontSize: "20px" }}
-              type="text"
-              className="exam-name mb-5"
-              onChange={(e) => setExamName(e.target.value)}
-            />
+                        <div className="d-flex flex-column align-items-center">
+                            <h3>Exam name</h3>
+                            <input
+                                style={{fontSize: "20px"}}
+                                type="text"
+                                className="exam-name mb-5"
+                                onChange={(e) => setExamName(e.target.value)}
+                            />
 
-          <Button className="btn-lg process-button" onClick={handleSubmit}>
-            Submit Exam
-          </Button>
-          </div>
-            {doesExist && <h2 className="mt-5">Exam Name Already Exists. Please enter a different name.</h2>}
-          {!doesExist && status === 1 && <h2 className="mt-5">Exam Submitted</h2>}
-        </>
-            )}
+                            <Button className="btn-lg process-button" onClick={handleSubmit}>
+                                Submit Exam
+                            </Button>
+                        </div>
+                        <Row className="d-flex justify-content-center">
+                            {doesExist &&
+                            <h2 className="mt-5">Exam Name Already Exists. Please enter a different name.</h2>}
+                            {!doesExist && status === 1 && <h2 className="mt-5 col-lg-offset-10">Exam Submitted</h2>}
+                        </Row>
+                    </>
+                )}
         </div>
 
-  );
+    );
 };
 
 export default NewExamMaker;

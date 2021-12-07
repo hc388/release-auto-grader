@@ -20,6 +20,16 @@ const  ResultTable = ({ index, tests, expected, actual, points, total, updater, 
       updater(index, e.target.value)
     }
   }
+
+  const styleRed = {
+    backgroundColor: "Red",
+    fontWeight: 900
+  }
+
+  const styleGreen = {
+    backgroundColor: "lightgreen",
+    fontWeight: 900
+  }
   //console.log( index, tests, expected, actual, points, total);
   // (Math.round(num * 100) / 100).toFixed(2);
   return(
@@ -33,8 +43,11 @@ const  ResultTable = ({ index, tests, expected, actual, points, total, updater, 
          {actual[index] === false && <td>False</td>}
          {actual[index] !== true && actual[index] !== false && <td>{actual[index]}</td>}
         <td>{(Math.round(total[index] * 100) / 100).toFixed(2)}</td>
-        <td style={{backgroundColor: "lightgreen", fontWeight:900}} className="text-center align-middle">{(Math.round(points[index] * 100) / 100).toFixed(2)}</td>
-
+        {
+          total[index] === points[index] ?
+              <td style={styleGreen} className="text-center align-middle">{(Math.round(points[index] * 100) / 100).toFixed(2)}</td> :
+              <td style={styleRed} className="text-center align-middle">{(Math.round(points[index] * 100) / 100).toFixed(2)}</td>
+        }
         <td><input style={{height:"50px", width:"80%", fontSize: "30px", textAlign: "center"}} value={inputValue} min={0} max={total[index]}   onChange={e=>changeInputValue(e)}/></td>
       </tr>
       {overflowFlag && <p>Input value must not exceed Max points</p> }

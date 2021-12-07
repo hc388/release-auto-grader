@@ -50,8 +50,8 @@ const TestCaseGenerator = (props) => {
     <React.Fragment>
       {inputList.map((x, i) => {
         return (
-          <span className="testcase d-flex">
-            <div className="col-md-9 testcaseboxes">
+          <span className="testcase d-flex col-md-12">
+            <div className="col-md-7 testcaseboxes">
               TestCase #{i + 1}
               <input
                 className="first-input"
@@ -82,7 +82,7 @@ const TestCaseGenerator = (props) => {
           </span>
         );
       })}
-      <Button className="btn btn-secondary" onClick={onClickSubmit} style={{width:"200px", fontSize:"15px"}}>Attatch Testcases</Button>
+      <Button className="btn btn-secondary" onClick={onClickSubmit} style={{width:"200px", fontSize:"15px"}}>Attach Testcases</Button>
     </React.Fragment>
   );
 };

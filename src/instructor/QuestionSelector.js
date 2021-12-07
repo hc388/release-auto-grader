@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { Button, Container, Table } from "react-bootstrap";
 import { Col, Row } from "react-flexbox-grid";
 import FilterTopicOptions from "./FilterTopicOptions";
+import QuestionModal from "./QuestionModal";
 
 const QuestionSelector = props => {
 
@@ -58,12 +59,12 @@ const QuestionSelector = props => {
           {/*  <Button className="btn-xl" onClick={e => handleSelectedButton(e)}>Show Selected</Button>*/}
           {/*</Col>*/}
           <Col className="col-md-12 col-sm-offset-3">
-            <label className="col-md-4" htmlFor="user">
+            <label className="col-md-3" htmlFor="user">
               <p>Question Difficulty</p>
             </label>
             <select
               name="Difficulty"
-              className="question-diff-small col-md-4"
+              className="question-diff-small col-md-2"
               onChange={(e) => handleDifficultyChange(e)}
               value={difficulty}
             >
@@ -82,17 +83,18 @@ const QuestionSelector = props => {
           <tbody>
 
           {list.map((obj, index) => <Row className="questions-rows" key={obj.id}>
-              <tr className="d-flex">
-                <td className="list-section">
-                  <li class="list-item">{obj.questionString}
-                    <span class="list-item-detail">
-                        <span>Function: {obj.topic}</span>
-                        <span>Difficulty: {obj.difficulty}</span>
-                      </span>
-                  </li>
-                </td>
-                <button className="btn-light h-50 mt-3" onClick={(e) => onButtonClick(e, obj.qid)}>Add</button>
-              </tr>
+            <QuestionModal obj = {obj} allData={props.quesDetails} qid={obj.qid} addButton={1} onButtonClick={onButtonClick}/>
+              {/*<tr className="d-flex">*/}
+              {/*  <td className="list-section">*/}
+              {/*    <li class="list-item">{obj.questionString}*/}
+              {/*      <span class="list-item-detail">*/}
+              {/*          <span>Function: {obj.topic}</span>*/}
+              {/*          <span>Difficulty: {obj.difficulty}</span>*/}
+              {/*        </span>*/}
+              {/*    </li>*/}
+              {/*  </td>*/}
+              {/*  <button className="btn-light h-50 mt-3" onClick={(e) => onButtonClick(e, obj.qid)}>Add</button>*/}
+              {/*</tr>*/}
             </Row>
           )}
 

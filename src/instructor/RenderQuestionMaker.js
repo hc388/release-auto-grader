@@ -22,8 +22,6 @@ const RenderQuestionMaker = (props) => {
         <Row className="container-testcase d-flex justify-content-center m-3">
           <Row className="greet-msg m-1 justify-content-center align-items-center">TestCases</Row>
           <TestCaseGenerator updateTestCase={props.updateTestCase}/>
-
-
         </Row>
         <Row className="d-flex flex-col col-md-9 justify-content-around m-3 flex-wrap">
           <Col className="loop-condition-specifier d-flex justify-content-center align-items-center">

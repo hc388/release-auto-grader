@@ -50,16 +50,6 @@ const StudentCheckGrades = (props) => {
             <h1 className="exam-header">Select Exam to Check Grades</h1>
             <div className="exam-list">
               {dataArray.map((obj) => (
-                // <div className="list" key={`div${obj}`}>
-                //   <h3>{obj}</h3>
-                //   <Link to={`/student/check-grades/${obj}/${id}`} >
-                //   <button className="exam-list-item"
-                //           key={`score${obj}`}
-                //   onClick={e => ViewScoresClickHandler(e,obj)}>
-                //     View Scores
-                //   </button>
-                //   </Link>
-                // </div>
                   <Container className="col-md-12 d-flex flex-row justify-content-center">
                     <Row className="mt-3 w-100 justify-content-center">
                       <Col className="col-md-5">

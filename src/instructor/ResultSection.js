@@ -16,6 +16,7 @@ const ResultSection = (props) => {
   const [newTotal, setNewTotal] = useState(0);
   const [overFlow, setOverFlow] = useState(false);
   const [resetInput, setResetInput] = useState(true);
+  const [saveStatus, setSaveStatus] = useState(false)
 
 
   useEffect(() => {
@@ -113,6 +114,7 @@ const ResultSection = (props) => {
       props.onSaving(props.index, temp, scoreObj, comment);
     }
     //console.log(scoreObj, comment)
+    setSaveStatus(true)
   };
   const onClickCancel = () => {
     console.log("You clicked cancel");
@@ -168,7 +170,7 @@ const ResultSection = (props) => {
         <span className="col-sm-5">
         <Button className="btn-lg h-75 mx-2 col-md-5" onClick={onCommentButtonClickHandler}>Save</Button>
         <Button className="btn-lg h-75 btn-danger col-md-5" onClick={onClickCancel}>Cancel</Button>
-          {overFlow && <p>Total points should not exceed {props.quesArray.points}</p>}
+          {saveStatus && <p>save successful...</p>}
         </span>
       </Row>
     </React.Fragment>

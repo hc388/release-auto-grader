@@ -4,7 +4,7 @@ import Modal from "react-modal"
 import { destringify, restringify } from 'json-destringify';
 
 
-const QuestionModal = ({obj, allData, qid, close}) => {
+const QuestionModal = ({obj, allData, qid, addButton, onButtonClick}) => {
     const [quesObj, setQuesObj] = useState({})
     const [loading, setLoading] = useState(true)
     const [isOpen, setIsOpen] = useState(false)
@@ -32,7 +32,10 @@ const QuestionModal = ({obj, allData, qid, close}) => {
 
                     </li>
                 </td>
-            </tr>
+                <td>
+                {addButton === 1 && <button className="add-ques-button btn-light mt-1" onClick={(e) => onButtonClick(e, obj.qid)}>Add</button>}
+                </td>
+                </tr>
             {/*<Button class="btn btn-light" onClick={openModal}>see details</Button>*/}
             <Modal
                 className="custom_modal"
