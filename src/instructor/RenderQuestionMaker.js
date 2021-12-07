@@ -9,7 +9,7 @@ const RenderQuestionMaker = (props) => {
 
     <Container className="container-fluid d-flex flex-row w-100 container-main">
       <Container
-        className="container-fluid d-flex flex-column justify-content-center align-items-center container-left">
+        className="container-fluid d-flex flex-column justify-content-center align-items-center container-left-make-question">
 
         <Row className="greet-msg mt-1">Upload Your Question Here</Row>
         <Row className="textarea-question-maker w-100 d-flex justify-content-center">
@@ -38,7 +38,7 @@ const RenderQuestionMaker = (props) => {
           </Col>
         </Row>
         <Row className="d-flex flex-row col-md-9 mt-3">
-          <label className="question-label col-md-8" htmlFor="user">
+          <label className="question-label col-md-5" htmlFor="user">
             <b>Question Difficulty</b>
           </label>
           <select
@@ -54,7 +54,7 @@ const RenderQuestionMaker = (props) => {
           </select>
         </Row>
         <Row className="d-flex flex-row col-md-9 mb-5">
-          <label className="question-label col-md-8" htmlFor="pass">
+          <label className="question-label col-md-5" htmlFor="pass">
             <b>Question Topic</b>
           </label>
           <input
